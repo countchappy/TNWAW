@@ -1,0 +1,60 @@
+Sandbox_EN = {
+    Sandbox_TNWAWcommon = "TNWAW: Common Behavior",
+
+    Sandbox_SpeedLore         = "Default Zombie Speed",
+    Sandbox_SpeedLore_tooltip = "The normal zombie speed. This is what the zombies will start to return to at 'Daybreak', or after a storm passes.",
+
+    Sandbox_LoreZombieSpeeds_option1 = "Sprinters"    
+    Sandbox_LoreZombieSpeeds_option2 = "Fast Shamblers",
+    Sandbox_LoreZombieSpeeds_option3 = "Shamblers",
+    Sandbox_LoreZombieSpeeds_option4 = "Random",
+
+
+
+
+    Sandbox_TNWAWnight = "TNWAW: Night Behavior",
+
+    Sandbox_ModEnabledNight          = "Enable Night Behavior Modifications",
+    Sandbox_ModEnabledNight_tooltip  = "This settings will enable/disable the night based zombie behavior modifications that are configured with the settings below.",
+
+    Sandbox_NightEndSpring   = "Daybreak for Spring",
+    Sandbox_NightEndSummer   = "Daybreak for Summer",
+    Sandbox_NightEndAutumn   = "Daybreak for Autumn",
+    Sandbox_NightEndWinter   = "Daybreak for Winter",
+    Sandbox_NightStartSpring = "Nightfall for Spring",
+    Sandbox_NightStartSummer = "Nightfall for Summer",
+    Sandbox_NightStartAutumn = "Nightfall for Autumn",
+    Sandbox_NightStartWinter = "Nightfall for Winter",
+
+    Sandbox_NightEndSpring   = "Enter the hour using 24-hour time",
+    Sandbox_NightEndSummer   = "Enter the hour using 24-hour time",
+    Sandbox_NightEndAutumn   = "Enter the hour using 24-hour time",
+    Sandbox_NightEndWinter   = "Enter the hour using 24-hour time",
+    Sandbox_NightStartSpring = "Enter the hour using 24-hour time",
+    Sandbox_NightStartSummer = "Enter the hour using 24-hour time",
+    Sandbox_NightStartAutumn = "Enter the hour using 24-hour time",
+    Sandbox_NightStartWinter = "Enter the hour using 24-hour time",
+
+    Sandbox_ModSpeedEnabledNight            = "Enable Zombie Speed Modification",
+    Sandbox_ModSpeedEnabledNight_tooltip    = "Enable the zombie speed modification at night.",
+
+    Sandbox_SpeedTargetNight                = "Target Zombie Speed",
+    Sandbox_SpeedTargetNight_tooltip        = "The zombie speed to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+    Sandbox_TargetZombieSpeeds_option1  = "Sprinters"    
+    Sandbox_TargetZombieSpeeds_option2  = "Fast Shamblers",
+
+
+    
+
+    Sandbox_TNWAWweather = "TNWAW: Weather Behavior",
+
+    Sandbox_ModEnabledWeather                      = "Enable Weather Behavior Modifications",
+    Sandbox_ModEnabledWeather_tooltip              = "This setting will enable/disable the weather based zombie behavior modifications that are configured with the settings below.",
+
+    Sandbox_ModSpeedEnabledRain                = "Enable Rain Zombie Speed Modification",
+    Sandbox_ModSpeedEnabledRain_tooltip        = "Enable the zombie speed modification when it's raining.",
+
+    Sandbox_SpeedTargetRain                    = "Rain Target Zombie Speed",
+    Sandbox_SpeedTargetRain_tooltip            = "The zombie speed to start phasing zombies to when it starts raining.",
+}

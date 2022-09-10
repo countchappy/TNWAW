@@ -1,0 +1,143 @@
+VERSION = 1,
+
+option TNWAW.SpeedLore
+{
+	page = TNWAWcommon,
+	translation = SpeedLore,
+	type = enum,
+	valueTranslation = LoreZombieSpeeds,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW.ModEnabledNight
+{
+	page = TNWAWnight,
+	translation = ModEnabledNight,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.NightStartSpring
+{
+	page = TNWAWnight,
+	translation = NightStartSpring,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 22,
+}
+
+option TNWAW.NightStartSummer
+{
+	page = TNWAWnight,
+    translation = NightStartSummer,
+	type = integer,
+    min = 0,
+    max = 23,
+    default = 23,
+}
+
+option TNWAW.NightStartAutumn
+{
+	page = TNWAWnight,
+	translation = NightStartAutumn,
+	type = integer,
+    min = 0,
+	max = 23,
+	default = 22,
+}
+
+option TNWAW.NightStartWinter
+{
+	page = TNWAWnight,
+	translation = NightStartWinter,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 20,
+}
+
+option TNWAW.NightEndSpring
+{
+	page = TNWAWnight,
+	translation = NightEndSpring,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.NightEndSummer
+{
+	page = TNWAWnight,
+	translation = NightEndSummer,
+	type = integer,
+    min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.NightEndAutumn
+{
+	page = TNWAWnight,
+	translation = NightEndAutumn,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.NightEndWinter
+{
+	page = TNWAWnight,
+	translation = NightEndWinter,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.ModSpeedEnabledNight
+{
+	page = TNWAWnight,
+	translation = ModSpeedEnabledNight,
+	type = boolean,
+	default = true,
+}
+
+option TNWAW.SpeedTargetNight
+{
+	page = TNWAWnight,
+	translation = SpeedTargetNight,
+	type = enum,
+	valueTranslation = TargetZombieSpeeds,
+	numValues = 2,
+	default = 1,
+}
+
+option TNWAW.ModEnabledWeather
+{
+	page = TNWAWweather,
+	translation = ModEnabledWeather,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.ModSpeedEnabledRain
+{
+	page = TNWAWweather,
+	translation = ModSpeedEnabledRain,
+	type = boolean,
+	default = true,
+}
+
+option TNWAW.SpeedTargetRain
+{
+	page = TNWAWweather,
+	translation = SpeedTargetRain,
+	type = enum,
+	valueTranslation = TargetZombieSpeeds,
+	numValues = 2,
+	default = 2,
+}

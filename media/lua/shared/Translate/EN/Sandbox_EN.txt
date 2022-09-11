@@ -41,6 +41,9 @@ Sandbox_EN = {
     Sandbox_SpeedTargetNight                = "Target Zombie Speed",
     Sandbox_SpeedTargetNight_tooltip        = "The zombie speed to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
 
+    Sandbox_PhaseTimeoutNight                = "Night Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutNight_tooltip        = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
+
     Sandbox_TargetZombieSpeeds_option1  = "Sprinters"    
     Sandbox_TargetZombieSpeeds_option2  = "Fast Shamblers",
 
@@ -57,4 +60,7 @@ Sandbox_EN = {
 
     Sandbox_SpeedTargetRain                    = "Rain Target Zombie Speed",
     Sandbox_SpeedTargetRain_tooltip            = "The zombie speed to start phasing zombies to when it starts raining.",
+
+    Sandbox_PhaseTimeoutRain                    = "Rain Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutRain_tooltip            = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
 }

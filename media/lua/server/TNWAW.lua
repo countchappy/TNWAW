@@ -44,6 +44,10 @@ local Config = {
 	ZombieUpdateInterval = 500,
 	-- night
 	ModEnabledNight = false,
+	ModSpeedEnabledNight = true,
+	SpeedTargetNight = 1,
+	PhaseTimeoutNight = 15,
+	-- dawn & dusk
 	NightStartSpring = 22,
 	NightStartSummer = 23,
 	NightStartAutumn = 22,
@@ -52,14 +56,13 @@ local Config = {
 	NightEndSummer = 6,
 	NightEndAutumn = 6,
 	NightEndWinter = 6,
-	PhaseTimeoutNight = 15,
-	ModSpeedEnabledNight = true,
-	SpeedTargetNight = 1,
 	-- weather
 	ModEnabledWeather = false,
-	PhaseTimeoutRain = 30,
 	ModSpeedEnabledRain = true,
 	SpeedTargetRain = 2,
+	PhaseTimeoutRain = 30,
+	RainThreshold = 10,
+
 	-- Methods
 	PollTNWAWSetting = function(self, key)
 		local s = getSandboxOptions():getOptionByName("TNWAW."..key):getValue() or self[key];
@@ -284,19 +287,25 @@ local NightManager = {
 local WeatherManager = {
 	Enabled = false,
 	LastRain = 0.0,
+	IsRaining = false,
+
+	Refresh = function(self)
+		Config:PollTNWAWSetting("RainThreshold");
+	end,
 
 	CheckRain = function(self)
-		local currentRain = RainManager:getRainIntensity();
+		local currentRain = RainManager:getRainIntensity() * 100;
+
 		if self.LastRain ~= currentRain then
 			self.LastRain = currentRain;
 
-			local isRaining = self.LastRain > 0.1;
+			self.IsRaining = self.LastRain >= Config.RainThreshold;
 	
-			if isDebugEnabled() and not isRaining and self.LastRain > 0.0001 then
+			if isDebugEnabled() and not self.IsRaining and self.LastRain >= 1 then
 				Log("Rain started. Amount="..self.LastRain);
 			end
 		
-			if ModSpeedManager.Enabled then ModSpeedManager:ToggleRain(rainEnabled) end
+			if ModSpeedManager.Enabled then ModSpeedManager:ToggleRain(self.IsRaining) end
 		end
 	end,
 
@@ -335,6 +344,9 @@ local Core = {
 	
 	EvaluateModEnabledWeather = function(self)
 		if WeatherManager.Enabled ~= Config.ModEnabledWeather then
+			if Config.ModEnabledWeather then
+				WeatherManager:Refresh();
+			end
 			WeatherManager.Enabled = Config.ModEnabledWeather;
 			self:EvaluateModEnabled();
 		end
@@ -354,6 +366,7 @@ local function EveryOneMinute()
     Core:Refresh()
 
 	if NightManager.Enabled then NightManager:Refresh() end
+	if WeatherManager.Enabled then WeatherManager:Refresh() end
 	if ModSpeedManager.Enabled then ModSpeedManager:Refresh() end
 end
 

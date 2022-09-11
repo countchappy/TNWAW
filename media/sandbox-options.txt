@@ -18,6 +18,34 @@ option TNWAW.ModEnabledNight
 	default = false,
 }
 
+option TNWAW.ModSpeedEnabledNight
+{
+	page = TNWAWnight,
+	translation = ModSpeedEnabledNight,
+	type = boolean,
+	default = true,
+}
+
+option TNWAW.SpeedTargetNight
+{
+	page = TNWAWnight,
+	translation = SpeedTargetNight,
+	type = enum,
+	valueTranslation = TargetZombieSpeeds,
+	numValues = 2,
+	default = 1,
+}
+
+option TNWAW.PhaseTimeoutNight
+{
+	page = TNWAWnight,
+	translation = PhaseTimeoutNight,
+	type = integer,
+	min = 5,
+	max = 60,
+	default = 15,
+}
+
 option TNWAW.NightStartSpring
 {
 	page = TNWAWnight,
@@ -98,34 +126,6 @@ option TNWAW.NightEndWinter
 	default = 6,
 }
 
-option TNWAW.ModSpeedEnabledNight
-{
-	page = TNWAWnight,
-	translation = ModSpeedEnabledNight,
-	type = boolean,
-	default = true,
-}
-
-option TNWAW.SpeedTargetNight
-{
-	page = TNWAWnight,
-	translation = SpeedTargetNight,
-	type = enum,
-	valueTranslation = TargetZombieSpeeds,
-	numValues = 2,
-	default = 1,
-}
-
-option TNWAW.PhaseTimeoutNight
-{
-	page = TNWAWnight,
-	translation = PhaseTimeoutNight,
-	type = integer,
-	min = 5,
-	max = 60,
-	default = 15,
-}
-
 option TNWAW.ModEnabledWeather
 {
 	page = TNWAWweather,
@@ -160,4 +160,14 @@ option TNWAW.PhaseTimeoutRain
 	min = 5,
 	max = 60,
 	default = 30,
+}
+
+option TNWAW.RainThreshold
+{
+	page = TNWAWweather,
+	translation = RainThreshold,
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 10,
 }

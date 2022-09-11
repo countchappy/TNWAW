@@ -116,6 +116,16 @@ option TNWAW.SpeedTargetNight
 	default = 1,
 }
 
+option TNWAW.PhaseTimeoutNight
+{
+	page = TNWAWnight,
+	translation = PhaseTimeoutNight,
+	type = integer,
+	min = 5,
+	max = 60,
+	default = 15,
+}
+
 option TNWAW.ModEnabledWeather
 {
 	page = TNWAWweather,
@@ -140,4 +150,14 @@ option TNWAW.SpeedTargetRain
 	valueTranslation = TargetZombieSpeeds,
 	numValues = 2,
 	default = 2,
+}
+
+option TNWAW.PhaseTimeoutRain
+{
+	page = TNWAWweather,
+	translation = PhaseTimeoutRain,
+	type = integer,
+	min = 5,
+	max = 60,
+	default = 30,
 }

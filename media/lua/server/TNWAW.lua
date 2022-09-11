@@ -1,20 +1,20 @@
 -- Format(): For debugging ... Takes an input and returns a print() safe version of that value.
-local FormatTable = {
-	["string"] = function() return field end,
-	["number"] = function() return field end,
-	["function"] = function() return "<function>" end,
-	["nil"] = function() return "<nil>" end,
-	["boolean"] = function()
-		if field then
-			return "true";
-		else 
-			return "false";
-		end
-	end,
-	["table"] = function() return "<table>" end,
-}
 local function Format(field)
-	local m_func = FormatTable[type(field)];
+	local s_tbl = {
+		["string"] = function() return field end,
+		["number"] = function() return field end,
+		["function"] = function() return "<function>" end,
+		["nil"] = function() return "<nil>" end,
+		["boolean"] = function()
+			if field then
+				return "true";
+			else 
+				return "false";
+			end
+		end,
+		["table"] = function() return "<table>" end,
+	}
+	local m_func = s_tbl[type(field)];
 	if (m_func) then
 		return m_func();
 	end
@@ -57,7 +57,7 @@ local Config = {
 	SpeedTargetNight = 1,
 	-- weather
 	ModEnabledWeather = false,
-	PhaseTimeoutWeather = 30,
+	PhaseTimeoutRain = 30,
 	ModSpeedEnabledRain = true,
 	SpeedTargetRain = 2,
 	-- Methods
@@ -98,7 +98,7 @@ local ModSpeedManager = {
 		local t = {};
 
 		if self.NightEnabled then table.insert(t, Config.PhaseTimeoutNight) end
-		if self.RainEnabled then table.insert(t, Config.PhaseTimeoutWeather) end
+		if self.RainEnabled then table.insert(t, Config.PhaseTimeoutRain) end
 
 		table.sort(t);
 		local r = 15;
@@ -143,10 +143,10 @@ local ModSpeedManager = {
 	Refresh = function(self)
 		Config:PollTNWAWSetting("SpeedLore");
 		Config:PollTNWAWSetting("ModSpeedEnabledNight");
-		--Config:PollTNWAWSetting("PhaseTimeoutNight");
+		Config:PollTNWAWSetting("PhaseTimeoutNight");
 		Config:PollTNWAWSetting("SpeedTargetNight");
 		Config:PollTNWAWSetting("ModSpeedEnabledRain");
-		--Config:PollTNWAWSetting("PhaseTimeoutWeather");
+		Config:PollTNWAWSetting("PhaseTimeoutRain");
 		Config:PollTNWAWSetting("SpeedTargetRain");
 
 		if self.CurrentSpeed == -1 then

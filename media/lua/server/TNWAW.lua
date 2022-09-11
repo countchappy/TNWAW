@@ -7,9 +7,9 @@ local function Format(field)
 		["nil"] = function() return "<nil>" end,
 		["boolean"] = function()
 			if field then
-				return "true";
+				return "enabled";
 			else 
-				return "false";
+				return "disabled";
 			end
 		end,
 		["table"] = function() return "<table>" end,
@@ -62,6 +62,10 @@ local Config = {
 	SpeedTargetRain = 2,
 	PhaseTimeoutRain = 30,
 	RainThreshold = 10,
+	ModSpeedEnabledFog = true,
+	SpeedTargetFog = 2,
+	PhaseTimeoutFog = 30,
+	FogThreshold = 25,
 
 	-- Methods
 	PollTNWAWSetting = function(self, key)
@@ -77,21 +81,25 @@ local Config = {
 
 local ModSpeedManager = {
 	Enabled = false,
-	RainEnabled = false,
 	NightEnabled = false,
+	RainEnabled = false,
+	FogEnabled = false,
 	CurrentSpeed = -1,
 	PhaseChangeActive = false,
 	PhaseChangeTimer = 0,
 
+	Log = function(msg) Log("MSM: "..msg) end,
+
 	TargetSpeed = function(self)
 		local s = {};
 
-		if self.NightEnabled then table.insert(s, Config.SpeedTargetNight) end
-		if self.RainEnabled then table.insert(s, Config.SpeedTargetRain) end
+		if Config.ModSpeedEnabledNight and self.NightEnabled then table.insert(s, Config.SpeedTargetNight) end
+		if Config.ModSpeedEnabledRain and self.RainEnabled then table.insert(s, Config.SpeedTargetRain) end
+		if Config.ModSpeedEnabledFog and self.FogEnabled then table.insert(s, Config.SpeedTargetFog) end
 
-		table.sort(s);
 		local r = Config.SpeedLore;
 		if s[1] ~= nil then
+			table.sort(s);
 			r = s[1];
 		end
 		return r;
@@ -100,19 +108,20 @@ local ModSpeedManager = {
 	PhaseTimeout = function(self)
 		local t = {};
 
-		if self.NightEnabled then table.insert(t, Config.PhaseTimeoutNight) end
-		if self.RainEnabled then table.insert(t, Config.PhaseTimeoutRain) end
+		if Config.ModSpeedEnabledNight and self.NightEnabled then table.insert(t, Config.PhaseTimeoutNight) end
+		if Config.ModSpeedEnabledRain and self.RainEnabled then table.insert(t, Config.PhaseTimeoutRain) end
+		if Config.ModSpeedEnabledFog and self.FogEnabled then table.insert(t, Config.PhaseTimeoutFog) end
 
-		table.sort(t);
 		local r = 15;
 		if t[#t] ~= nil then
+			table.sort(t);
 			r = t[#t];
 		end
 		return r;
 	end,
 
 	MutationActive = function(self)
-		return self.RainEnabled or self.NightEnabled;
+		return self.NightEnabled or self.RainEnabled or self.FogEnabled;
 	end,
 
 	UpdateSpeed = function(self)
@@ -145,12 +154,18 @@ local ModSpeedManager = {
 	
 	Refresh = function(self)
 		Config:PollTNWAWSetting("SpeedLore");
+
 		Config:PollTNWAWSetting("ModSpeedEnabledNight");
 		Config:PollTNWAWSetting("PhaseTimeoutNight");
 		Config:PollTNWAWSetting("SpeedTargetNight");
+
 		Config:PollTNWAWSetting("ModSpeedEnabledRain");
 		Config:PollTNWAWSetting("PhaseTimeoutRain");
 		Config:PollTNWAWSetting("SpeedTargetRain");
+
+		Config:PollTNWAWSetting("ModSpeedEnabledFog");
+		Config:PollTNWAWSetting("PhaseTimeoutFog");
+		Config:PollTNWAWSetting("SpeedTargetFog");
 
 		if self.CurrentSpeed == -1 then
 			self.CurrentSpeed = getSandboxOptions():getOptionByName("ZombieLore.Speed"):getValue() or Config.SpeedLore;
@@ -164,9 +179,9 @@ local ModSpeedManager = {
 	
 						if self:MutationActive() then
 							self:DoPhaseChange(targetSpeed);
-							if isDebugEnabled() then Log("MSM: Phase change complete.") end
+							if isDebugEnabled() then self.Log("Phase change complete.") end
 						else
-							if isDebugEnabled() then Log("MSM: Phase timeout complete.") end
+							if isDebugEnabled() then self.Log("Phase timeout complete.") end
 						end
 					end
 				else
@@ -175,15 +190,15 @@ local ModSpeedManager = {
 
 					if not self:MutationActive() then
 						self:DoPhaseChange(targetSpeed);
-						if isDebugEnabled() then Log("MSM: Phase change complete. Timeout=" .. self.PhaseChangeTimer) end
+						if isDebugEnabled() then self.Log("Phase change complete. Timeout=" .. self.PhaseChangeTimer) end
 					else
-						if isDebugEnabled() then Log("MSM: Phasing towards target speed " .. targetSpeed .. ". Timeout=" .. self.PhaseChangeTimer) end
+						if isDebugEnabled() then self.Log("Phasing towards target speed " .. targetSpeed .. ". Timeout=" .. self.PhaseChangeTimer) end
 					end
 	
 				end
 				self.PhaseChangeTimer = self.PhaseChangeTimer - 1;
 			elseif self.PhaseChangeActive or self.PhaseChangeTimer > 0 then
-				if isDebugEnabled() then Log("MSM: Target speed already reached. Cancelling phase timer.") end
+				if isDebugEnabled() then self.Log("Target speed already reached. Cancelling phase timer.") end
 				self.PhaseChangeActive = false;
 				self.PhaseChangeTimer = 0;
 			end
@@ -193,34 +208,33 @@ local ModSpeedManager = {
 	Toggle = function(enabled)
 		if self.Enabled ~= enabled then
 			if enabled then
-				if isDebugEnabled() then Log("MSM: Initializing ... loading required settings") end
+				if isDebugEnabled() then self.Log("Initializing ... loading required settings") end
 				self:Refresh();
 			else
-				if isDebugEnabled() then Log("MSM: Shutting down ...") end
+				if isDebugEnabled() then self.Log("Shutting down ...") end
 			end
 			self.Enabled = enabled;
 		end
 	end,
 	
-	ToggleRain = function(self, isRaining)
-		if self.RainEnabled ~= isRaining then
-			if isRaining then
-				if isDebugEnabled() then Log("MSM: Rain is enabled.") end
-			else
-				if isDebugEnabled() then Log("MSM: Rain is disabled.") end
-			end
-			self.RainEnabled = isRaining;
+	ToggleNight = function(self, isNight)
+		if self.NightEnabled ~= isNight then
+			if isDebugEnabled() then self.Log("Night is " .. Format(isNight)) end
+			self.NightEnabled = isNight;
 		end
 	end,
 	
-	ToggleNight = function(self, isNight)
-		if self.NightEnabled ~= isNight then
-			if isNight then
-				if isDebugEnabled() then Log("MSM: Night is enabled.") end
-			else
-				if isDebugEnabled() then Log("MSM: Rain is disabled.") end
-			end
-			self.NightEnabled = isNight;
+	ToggleRain = function(self, isRaining)
+		if self.RainEnabled ~= isRaining then
+			if isDebugEnabled() then self.Log("Rain is " .. Format(isRaining)) end
+			self.RainEnabled = isRaining;
+		end
+	end,
+
+	ToggleFog = function(self, isFoggy)
+		if self.FogEnabled ~= isFoggy then
+			if isDebugEnabled() then self.Log("Fog is " .. Format(isFoggy)) end
+			self.FogEnabled = isFoggy;
 		end
 	end,
 
@@ -231,7 +245,7 @@ local ModSpeedManager = {
 			vMod.Speed = self.CurrentSpeed;
 			RefreshZombie(zombie);
 		end
-	end
+	end,
 }
 -- ============================================
 
@@ -288,9 +302,12 @@ local WeatherManager = {
 	Enabled = false,
 	LastRain = 0.0,
 	IsRaining = false,
+	LastFog = 0.0,
+	IsFoggy = false,
 
 	Refresh = function(self)
 		Config:PollTNWAWSetting("RainThreshold");
+		Config:PollTNWAWSetting("FogThreshold");
 	end,
 
 	CheckRain = function(self)
@@ -302,15 +319,33 @@ local WeatherManager = {
 			self.IsRaining = self.LastRain >= Config.RainThreshold;
 	
 			if isDebugEnabled() and not self.IsRaining and self.LastRain >= 1 then
-				Log("Rain started. Amount="..self.LastRain);
+				Log("Rain started. Threshold/Amount=" .. Config.RainThreshold .. "/" .. self.LastRain);
 			end
 		
 			if ModSpeedManager.Enabled then ModSpeedManager:ToggleRain(self.IsRaining) end
 		end
 	end,
 
+	CheckFog = function(self)
+		local climateManager = getClimateManager();
+		local currentFog = climateManager:getFogIntensity() * 100;
+
+		if self.LastFog ~= currentFog then
+			self.LastFog = currentFog;
+
+			self.IsFoggy = self.LastFog >= Config.FogThreshold;
+
+			if isDebugEnabled() and not self.IsFoggy and self.LastFog >= 1 then
+				Log("Fog started. Threshold/Amount=" .. Config.FogThreshold .. "/" .. self.LastFog);
+			end
+
+			if ModSpeedManager.Enabled then ModSpeedManager:ToggleFog(self.IsFoggy) end
+		end
+	end,
+
 	OnClimateTick = function(self)
 		self:CheckRain();
+		self:CheckFog();
 	end,
 }
 -- ============================================
@@ -321,11 +356,7 @@ local Core = {
 	EvaluateModEnabled = function(self)
 		local enabled = Config.ModEnabledNight or Config.ModEnabledWeather;
 		if self.Enabled ~= enabled then
-			if enabled then
-				if isDebugEnabled() then Log("Mod enabled.") end
-			else
-				if isDebugEnabled() then Log("Mod enabled.") end
-			end
+			if isDebugEnabled() then Log("Mod " .. Format(enabled)) end
 			self.Enabled = enabled;
 
 			ModSpeedManager.Enabled = enabled;

@@ -55,15 +55,27 @@ Sandbox_EN = {
     Sandbox_ModEnabledWeather                  = "Enable Weather Behavior Mutations",
     Sandbox_ModEnabledWeather_tooltip          = "This setting will enable/disable the weather based zombie behavior mutations that are configured with the settings below.",
 
-    Sandbox_ModSpeedEnabledRain                = "Enable Rain Zombie Speed Mutation",
+    Sandbox_ModSpeedEnabledRain                = "Rain: Enable Speed Mutation",
     Sandbox_ModSpeedEnabledRain_tooltip        = "Enable the zombie speed mutation when it's raining.",
 
-    Sandbox_SpeedTargetRain                    = "Rain Target Zombie Speed",
+    Sandbox_SpeedTargetRain                    = "Rain: Target Zombie Speed",
     Sandbox_SpeedTargetRain_tooltip            = "The zombie speed to start phasing zombies to when it starts raining.",
 
-    Sandbox_PhaseTimeoutRain                   = "Rain Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutRain                   = "Rain: Mutation Phase Timeout",
     Sandbox_PhaseTimeoutRain_tooltip           = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
 
-    Sandbox_RainThreshold                      = "Rain Intensity % Required to Activate",
+    Sandbox_RainThreshold                      = "Rain: Intensity % Required to Activate",
     Sandbox_RainThreshold_tooltip              = "The rain intensity that is needed in order to activate the mutation.\nReference: A value of 1 is the drizzle of when the rain starts. A value of 50 and above would be a storm. 75 and higher is a really intense storm.\nNOTE: Over the course of a storm, rain intensity can fluctuate anywhere from ~50% to ~90% in value. Unless this effect is something that you want, a higher setting may cause your zombies to drop in and out of mutation states during storms.",
+
+    Sandbox_ModSpeedEnabledFog                 = "Fog: Enable Speed Mutation",
+    Sandbox_ModSpeedEnabledFog_tooltip         = "Enable the zombie speed mutation when it's foggy.",
+
+    Sandbox_SpeedTargetFog                     = "Fog: Target Zombie Speed",
+    Sandbox_SpeedTargetFog_tooltip             = "The zombie speed to start phasing zombies to when it is foggy.",
+
+    Sandbox_PhaseTimeoutFog                    = "Fog: Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutFog_tooltip            = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
+
+    Sandbox_FogThreshold                       = "Fog: Intensity % Required to Activate",
+    Sandbox_FogThreshold_tooltip               = "The fog intensity that is needed in order to activate the mutation.",
 }

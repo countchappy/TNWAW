@@ -171,3 +171,41 @@ option TNWAW.RainThreshold
 	max = 100,
 	default = 10,
 }
+
+option TNWAW.ModSpeedEnabledFog
+{
+	page = TNWAWweather,
+	translation = ModSpeedEnabledFog,
+	type = boolean,
+	default = true,
+}
+
+option TNWAW.SpeedTargetFog
+{
+	page = TNWAWweather,
+	translation = SpeedTargetFog,
+	type = enum,
+	valueTranslation = TargetZombieSpeeds,
+	numValues = 2,
+	default = 2,
+}
+
+option TNWAW.PhaseTimeoutFog
+{
+	page = TNWAWweather,
+	translation = PhaseTimeoutFog,
+	type = integer,
+	min = 5,
+	max = 60,
+	default = 30,
+}
+
+option TNWAW.FogThreshold
+{
+	page = TNWAWweather,
+	translation = FogThreshold,
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 10,
+}

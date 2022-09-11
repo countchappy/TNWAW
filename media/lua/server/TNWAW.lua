@@ -1,20 +1,20 @@
 -- Format(): For debugging ... Takes an input and returns a print() safe version of that value.
-local FormatTable = {
-	["string"] = function() return field end,
-	["number"] = function() return field end,
-	["function"] = function() return "<function>" end,
-	["nil"] = function() return "<nil>" end,
-	["boolean"] = function()
-		if field then
-			return "true";
-		else 
-			return "false";
-		end
-	end,
-	["table"] = function() return "<table>" end,
-}
 local function Format(field)
-	local m_func = FormatTable[type(field)];
+	local s_tbl = {
+		["string"] = function() return field end,
+		["number"] = function() return field end,
+		["function"] = function() return "<function>" end,
+		["nil"] = function() return "<nil>" end,
+		["boolean"] = function()
+			if field then
+				return "true";
+			else 
+				return "false";
+			end
+		end,
+		["table"] = function() return "<table>" end,
+	}
+	local m_func = s_tbl[type(field)];
 	if (m_func) then
 		return m_func();
 	end

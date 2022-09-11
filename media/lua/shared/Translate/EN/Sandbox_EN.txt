@@ -14,8 +14,8 @@ Sandbox_EN = {
 
     Sandbox_TNWAWnight = "TNWAW: Night Behavior",
 
-    Sandbox_ModEnabledNight          = "Enable Night Behavior Modifications",
-    Sandbox_ModEnabledNight_tooltip  = "This settings will enable/disable the night based zombie behavior modifications that are configured with the settings below.",
+    Sandbox_ModEnabledNight          = "Enable Night Behavior Mutations",
+    Sandbox_ModEnabledNight_tooltip  = "This settings will enable/disable the night based zombie behavior mutations that are configured with the settings below.",
 
     Sandbox_NightEndSpring   = "Daybreak for Spring",
     Sandbox_NightEndSummer   = "Daybreak for Summer",
@@ -35,32 +35,35 @@ Sandbox_EN = {
     Sandbox_NightStartAutumn = "Enter the hour using 24-hour time",
     Sandbox_NightStartWinter = "Enter the hour using 24-hour time",
 
-    Sandbox_ModSpeedEnabledNight            = "Enable Zombie Speed Modification",
-    Sandbox_ModSpeedEnabledNight_tooltip    = "Enable the zombie speed modification at night.",
+    Sandbox_ModSpeedEnabledNight            = "Enable Zombie Speed Mutation",
+    Sandbox_ModSpeedEnabledNight_tooltip    = "Enable the zombie speed mutation at night.",
 
     Sandbox_SpeedTargetNight                = "Target Zombie Speed",
     Sandbox_SpeedTargetNight_tooltip        = "The zombie speed to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
 
-    Sandbox_PhaseTimeoutNight                = "Night Mutation Phase Timeout",
-    Sandbox_PhaseTimeoutNight_tooltip        = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
+    Sandbox_PhaseTimeoutNight               = "Night Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutNight_tooltip       = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
 
-    Sandbox_TargetZombieSpeeds_option1  = "Sprinters"    
-    Sandbox_TargetZombieSpeeds_option2  = "Fast Shamblers",
+    Sandbox_TargetZombieSpeeds_option1      = "Sprinters"    
+    Sandbox_TargetZombieSpeeds_option2      = "Fast Shamblers",
 
 
     
 
     Sandbox_TNWAWweather = "TNWAW: Weather Behavior",
 
-    Sandbox_ModEnabledWeather                      = "Enable Weather Behavior Modifications",
-    Sandbox_ModEnabledWeather_tooltip              = "This setting will enable/disable the weather based zombie behavior modifications that are configured with the settings below.",
+    Sandbox_ModEnabledWeather                  = "Enable Weather Behavior Mutations",
+    Sandbox_ModEnabledWeather_tooltip          = "This setting will enable/disable the weather based zombie behavior mutations that are configured with the settings below.",
 
-    Sandbox_ModSpeedEnabledRain                = "Enable Rain Zombie Speed Modification",
-    Sandbox_ModSpeedEnabledRain_tooltip        = "Enable the zombie speed modification when it's raining.",
+    Sandbox_ModSpeedEnabledRain                = "Enable Rain Zombie Speed Mutation",
+    Sandbox_ModSpeedEnabledRain_tooltip        = "Enable the zombie speed mutation when it's raining.",
 
     Sandbox_SpeedTargetRain                    = "Rain Target Zombie Speed",
     Sandbox_SpeedTargetRain_tooltip            = "The zombie speed to start phasing zombies to when it starts raining.",
 
-    Sandbox_PhaseTimeoutRain                    = "Rain Mutation Phase Timeout",
-    Sandbox_PhaseTimeoutRain_tooltip            = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
+    Sandbox_PhaseTimeoutRain                   = "Rain Mutation Phase Timeout",
+    Sandbox_PhaseTimeoutRain_tooltip           = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
+
+    Sandbox_RainThreshold                      = "Rain Intensity % Required to Activate",
+    Sandbox_RainThreshold_tooltip              = "The rain intensity that is needed in order to activate the mutation.\nReference: A value of 1 is the drizzle of when the rain starts. A value of 50 and above would be a storm. 75 and higher is a really intense storm.\nNOTE: Over the course of a storm, rain intensity can fluctuate anywhere from ~50% to ~90% in value. Unless this effect is something that you want, a higher setting may cause your zombies to drop in and out of mutation states during storms.",
 }

@@ -1,211 +1,295 @@
 VERSION = 1,
 
-option TNWAW.SpeedLore
+option TNWAW.ZombieLore.Speed
 {
-	page = TNWAWcommon,
-	translation = SpeedLore,
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Speed,
 	type = enum,
-	valueTranslation = LoreZombieSpeeds,
+	valueTranslation = ZombieLore_Speeds,
 	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.ModEnabledNight
+option TNWAW.ZombieLore.Cognition
 {
-	page = TNWAWnight,
-	translation = ModEnabledNight,
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Cognition,
+	type = enum,
+	valueTranslation = ZombieLore_Cognition,
+	numValues = 4,
+	default = 3,
+}
+
+
+
+
+
+option TNWAW.Night.Enabled
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Enabled,
 	type = boolean,
 	default = false,
 }
 
-option TNWAW.ModSpeedEnabledNight
+option TNWAW.Night.MutationEnabled.Speed
 {
-	page = TNWAWnight,
-	translation = ModSpeedEnabledNight,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Speed,
 	type = boolean,
-	default = true,
+	default = false,
 }
 
-option TNWAW.SpeedTargetNight
+option TNWAW.Night.MutationEnabled.Cognition
 {
-	page = TNWAWnight,
-	translation = SpeedTargetNight,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Cognition,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.Night.Target.Speed
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Speed,
 	type = enum,
-	valueTranslation = TargetZombieSpeeds,
-	numValues = 2,
-	default = 1,
+	valueTranslation = ZombieLore_Speeds,
+	numValues = 4,
+	default = 2,
 }
 
-option TNWAW.PhaseTimeoutNight
+option TNWAW.Night.Target.Cognition
 {
-	page = TNWAWnight,
-	translation = PhaseTimeoutNight,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Cognition,
+	type = enum,
+	valueTranslation = ZombieLore_Cognition,
+	numValues = 4,
+	default = 3,
+}
+
+option TNWAW.Night.PhaseTimeout
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_PhaseTimeout,
 	type = integer,
 	min = 5,
 	max = 60,
 	default = 15,
 }
 
-option TNWAW.NightStartSpring
+option TNWAW.Night.End.Spring
 {
-	page = TNWAWnight,
-	translation = NightStartSpring,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_End_Spring,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.Night.End.Summer
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_End_Summer,
+	type = integer,
+    min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.Night.End.Autumn
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_End_Autumn,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.Night.End.Winter
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_End_Winter,
+	type = integer,
+	min = 0,
+	max = 23,
+	default = 6,
+}
+
+option TNWAW.Night.Start.Spring
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Start_Spring,
 	type = integer,
 	min = 0,
 	max = 23,
 	default = 22,
 }
 
-option TNWAW.NightStartSummer
+option TNWAW.Night.Start.Summer
 {
-	page = TNWAWnight,
-    translation = NightStartSummer,
+	page = TNWAW_Night,
+    translation = TNWAW_Night_Start_Summer,
 	type = integer,
     min = 0,
     max = 23,
     default = 23,
 }
 
-option TNWAW.NightStartAutumn
+option TNWAW.Night.Start.Autumn
 {
-	page = TNWAWnight,
-	translation = NightStartAutumn,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Start_Autumn,
 	type = integer,
     min = 0,
 	max = 23,
 	default = 22,
 }
 
-option TNWAW.NightStartWinter
+option TNWAW.Night.Start.Winter
 {
-	page = TNWAWnight,
-	translation = NightStartWinter,
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Start_Winter,
 	type = integer,
 	min = 0,
 	max = 23,
 	default = 20,
 }
 
-option TNWAW.NightEndSpring
-{
-	page = TNWAWnight,
-	translation = NightEndSpring,
-	type = integer,
-	min = 0,
-	max = 23,
-	default = 6,
-}
 
-option TNWAW.NightEndSummer
-{
-	page = TNWAWnight,
-	translation = NightEndSummer,
-	type = integer,
-    min = 0,
-	max = 23,
-	default = 6,
-}
 
-option TNWAW.NightEndAutumn
-{
-	page = TNWAWnight,
-	translation = NightEndAutumn,
-	type = integer,
-	min = 0,
-	max = 23,
-	default = 6,
-}
 
-option TNWAW.NightEndWinter
-{
-	page = TNWAWnight,
-	translation = NightEndWinter,
-	type = integer,
-	min = 0,
-	max = 23,
-	default = 6,
-}
 
-option TNWAW.ModEnabledWeather
+option TNWAW.Rain.Enabled
 {
-	page = TNWAWweather,
-	translation = ModEnabledWeather,
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Enabled,
 	type = boolean,
 	default = false,
 }
 
-option TNWAW.ModSpeedEnabledRain
+option TNWAW.Rain.MutationEnabled.Speed
 {
-	page = TNWAWweather,
-	translation = ModSpeedEnabledRain,
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Speed,
 	type = boolean,
-	default = true,
+	default = false,
 }
 
-option TNWAW.SpeedTargetRain
+option TNWAW.Rain.MutationEnabled.Cognition
 {
-	page = TNWAWweather,
-	translation = SpeedTargetRain,
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Cognition,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.Rain.Target.Speed
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Speed,
 	type = enum,
-	valueTranslation = TargetZombieSpeeds,
-	numValues = 2,
+	valueTranslation = ZombieLore_Speeds,
+	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.PhaseTimeoutRain
+option TNWAW.Rain.Target.Cognition
 {
-	page = TNWAWweather,
-	translation = PhaseTimeoutRain,
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Cognition,
+	type = enum,
+	valueTranslation = ZombieLore_Cognition,
+	numValues = 4,
+	default = 3,
+}
+
+option TNWAW.Rain.PhaseTimeout
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_PhaseTimeout,
 	type = integer,
 	min = 5,
 	max = 60,
 	default = 30,
 }
 
-option TNWAW.RainThreshold
+option TNWAW.Rain.Threshold
 {
-	page = TNWAWweather,
-	translation = RainThreshold,
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Threshold,
 	type = integer,
 	min = 1,
 	max = 100,
-	default = 10,
+	default = 50,
 }
 
-option TNWAW.ModSpeedEnabledFog
+
+
+
+
+option TNWAW.Fog.Enabled
 {
-	page = TNWAWweather,
-	translation = ModSpeedEnabledFog,
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Enabled,
 	type = boolean,
-	default = true,
+	default = false,
 }
 
-option TNWAW.SpeedTargetFog
+option TNWAW.Fog.MutationEnabled.Speed
 {
-	page = TNWAWweather,
-	translation = SpeedTargetFog,
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Speed,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.Fog.MutationEnabled.Cognition
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Cognition,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW.Fog.Target.Speed
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Speed,
 	type = enum,
-	valueTranslation = TargetZombieSpeeds,
-	numValues = 2,
+	valueTranslation = ZombieLore_Speeds,
+	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.PhaseTimeoutFog
+option TNWAW.Fog.Target.Cognition
 {
-	page = TNWAWweather,
-	translation = PhaseTimeoutFog,
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Cognition,
+	type = enum,
+	valueTranslation = ZombieLore_Cognition,
+	numValues = 4,
+	default = 3,
+}
+
+option TNWAW.Fog.PhaseTimeout
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_PhaseTimeout,
 	type = integer,
 	min = 5,
 	max = 60,
 	default = 30,
 }
 
-option TNWAW.FogThreshold
+option TNWAW.Fog.Threshold
 {
-	page = TNWAWweather,
-	translation = FogThreshold,
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Threshold,
 	type = integer,
 	min = 1,
 	max = 100,
-	default = 10,
+	default = 50,
 }

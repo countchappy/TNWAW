@@ -1,16 +1,36 @@
 VERSION = 1,
 
-option TNWAW.ZombieLore.Speed
+option TNWAW_ZombieLore_Speed
 {
 	page = TNWAW_Default,
 	translation = TNWAW_ZombieLore_Speed,
 	type = enum,
-	valueTranslation = ZombieLore_Speeds,
+	valueTranslation = ZombieLore_Speed,
 	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.ZombieLore.Cognition
+option TNWAW_ZombieLore_Strength
+{
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Strength,
+	type = enum,
+	valueTranslation = ZombieLore_Strength,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_ZombieLore_Toughness
+{
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Toughness,
+	type = enum,
+	valueTranslation = ZombieLore_Toughness,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_ZombieLore_Cognition
 {
 	page = TNWAW_Default,
 	translation = TNWAW_ZombieLore_Cognition,
@@ -20,11 +40,41 @@ option TNWAW.ZombieLore.Cognition
 	default = 3,
 }
 
+option TNWAW_ZombieLore_Memory
+{
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Memory,
+	type = enum,
+	valueTranslation = ZombieLore_Memory,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_ZombieLore_Sight
+{
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Sight,
+	type = enum,
+	valueTranslation = ZombieLore_Sight,
+	numValues = 3,
+	default = 2,
+}
+
+option TNWAW_ZombieLore_Hearing
+{
+	page = TNWAW_Default,
+	translation = TNWAW_ZombieLore_Hearing,
+	type = enum,
+	valueTranslation = ZombieLore_Hearing,
+	numValues = 3,
+	default = 2,
+}
 
 
 
 
-option TNWAW.Night.Enabled
+
+option TNWAW_Night_Enabled
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Enabled,
@@ -32,7 +82,7 @@ option TNWAW.Night.Enabled
 	default = false,
 }
 
-option TNWAW.Night.MutationEnabled.Speed
+option TNWAW_Night_MutationEnabled_Speed
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_MutationEnabled_Speed,
@@ -40,7 +90,23 @@ option TNWAW.Night.MutationEnabled.Speed
 	default = false,
 }
 
-option TNWAW.Night.MutationEnabled.Cognition
+option TNWAW_Night_MutationEnabled_Strength
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Strength,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Night_MutationEnabled_Toughness
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Toughness,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Night_MutationEnabled_Cognition
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_MutationEnabled_Cognition,
@@ -48,17 +114,62 @@ option TNWAW.Night.MutationEnabled.Cognition
 	default = false,
 }
 
-option TNWAW.Night.Target.Speed
+option TNWAW_Night_MutationEnabled_Memory
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Memory,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Night_MutationEnabled_Sight
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Sight,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Night_MutationEnabled_Hearing
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_MutationEnabled_Hearing,
+	type = boolean,
+	default = false,
+}
+
+
+option TNWAW_Night_Target_Speed
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Target_Speed,
 	type = enum,
-	valueTranslation = ZombieLore_Speeds,
+	valueTranslation = ZombieLore_Speed,
 	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.Night.Target.Cognition
+option TNWAW_Night_Target_Strength
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Strength,
+	type = enum,
+	valueTranslation = ZombieLore_Strength,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Night_Target_Toughness
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Toughness,
+	type = enum,
+	valueTranslation = ZombieLore_Toughness,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Night_Target_Cognition
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Target_Cognition,
@@ -68,7 +179,39 @@ option TNWAW.Night.Target.Cognition
 	default = 3,
 }
 
-option TNWAW.Night.PhaseTimeout
+option TNWAW_Night_Target_Memory
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Memory,
+	type = enum,
+	valueTranslation = ZombieLore_Memory,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Night_Target_Sight
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Sight,
+	type = enum,
+	valueTranslation = ZombieLore_Sight,
+	numValues = 3,
+	default = 2,
+}
+
+option TNWAW_Night_Target_Hearing
+{
+	page = TNWAW_Night,
+	translation = TNWAW_Night_Target_Hearing,
+	type = enum,
+	valueTranslation = ZombieLore_Hearing,
+	numValues = 3,
+	default = 2,
+}
+
+
+
+option TNWAW_Night_PhaseTimeout
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_PhaseTimeout,
@@ -78,7 +221,7 @@ option TNWAW.Night.PhaseTimeout
 	default = 15,
 }
 
-option TNWAW.Night.End.Spring
+option TNWAW_Night_End_Spring
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_End_Spring,
@@ -88,7 +231,7 @@ option TNWAW.Night.End.Spring
 	default = 6,
 }
 
-option TNWAW.Night.End.Summer
+option TNWAW_Night_End_Summer
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_End_Summer,
@@ -98,7 +241,7 @@ option TNWAW.Night.End.Summer
 	default = 6,
 }
 
-option TNWAW.Night.End.Autumn
+option TNWAW_Night_End_Autumn
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_End_Autumn,
@@ -108,7 +251,7 @@ option TNWAW.Night.End.Autumn
 	default = 6,
 }
 
-option TNWAW.Night.End.Winter
+option TNWAW_Night_End_Winter
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_End_Winter,
@@ -118,7 +261,7 @@ option TNWAW.Night.End.Winter
 	default = 6,
 }
 
-option TNWAW.Night.Start.Spring
+option TNWAW_Night_Start_Spring
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Start_Spring,
@@ -128,7 +271,7 @@ option TNWAW.Night.Start.Spring
 	default = 22,
 }
 
-option TNWAW.Night.Start.Summer
+option TNWAW_Night_Start_Summer
 {
 	page = TNWAW_Night,
     translation = TNWAW_Night_Start_Summer,
@@ -138,7 +281,7 @@ option TNWAW.Night.Start.Summer
     default = 23,
 }
 
-option TNWAW.Night.Start.Autumn
+option TNWAW_Night_Start_Autumn
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Start_Autumn,
@@ -148,7 +291,7 @@ option TNWAW.Night.Start.Autumn
 	default = 22,
 }
 
-option TNWAW.Night.Start.Winter
+option TNWAW_Night_Start_Winter
 {
 	page = TNWAW_Night,
 	translation = TNWAW_Night_Start_Winter,
@@ -162,7 +305,7 @@ option TNWAW.Night.Start.Winter
 
 
 
-option TNWAW.Rain.Enabled
+option TNWAW_Rain_Enabled
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_Enabled,
@@ -170,7 +313,9 @@ option TNWAW.Rain.Enabled
 	default = false,
 }
 
-option TNWAW.Rain.MutationEnabled.Speed
+
+
+option TNWAW_Rain_MutationEnabled_Speed
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_MutationEnabled_Speed,
@@ -178,7 +323,23 @@ option TNWAW.Rain.MutationEnabled.Speed
 	default = false,
 }
 
-option TNWAW.Rain.MutationEnabled.Cognition
+option TNWAW_Rain_MutationEnabled_Strength
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Strength,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Rain_MutationEnabled_Toughness
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Toughness,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Rain_MutationEnabled_Cognition
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_MutationEnabled_Cognition,
@@ -186,17 +347,62 @@ option TNWAW.Rain.MutationEnabled.Cognition
 	default = false,
 }
 
-option TNWAW.Rain.Target.Speed
+option TNWAW_Rain_MutationEnabled_Memory
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Memory,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Rain_MutationEnabled_Sight
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Sight,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Rain_MutationEnabled_Hearing
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_MutationEnabled_Hearing,
+	type = boolean,
+	default = false,
+}
+
+
+option TNWAW_Rain_Target_Speed
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_Target_Speed,
 	type = enum,
-	valueTranslation = ZombieLore_Speeds,
+	valueTranslation = ZombieLore_Speed,
 	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.Rain.Target.Cognition
+option TNWAW_Rain_Target_Strength
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Strength,
+	type = enum,
+	valueTranslation = ZombieLore_Strength,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Rain_Target_Toughness
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Toughness,
+	type = enum,
+	valueTranslation = ZombieLore_Toughness,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Rain_Target_Cognition
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_Target_Cognition,
@@ -206,7 +412,39 @@ option TNWAW.Rain.Target.Cognition
 	default = 3,
 }
 
-option TNWAW.Rain.PhaseTimeout
+option TNWAW_Rain_Target_Memory
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Memory,
+	type = enum,
+	valueTranslation = ZombieLore_Memory,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Rain_Target_Sight
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Sight,
+	type = enum,
+	valueTranslation = ZombieLore_Sight,
+	numValues = 3,
+	default = 2,
+}
+
+option TNWAW_Rain_Target_Hearing
+{
+	page = TNWAW_Rain,
+	translation = TNWAW_Rain_Target_Hearing,
+	type = enum,
+	valueTranslation = ZombieLore_Hearing,
+	numValues = 3,
+	default = 2,
+}
+
+
+
+option TNWAW_Rain_PhaseTimeout
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_PhaseTimeout,
@@ -216,7 +454,7 @@ option TNWAW.Rain.PhaseTimeout
 	default = 30,
 }
 
-option TNWAW.Rain.Threshold
+option TNWAW_Rain_Threshold
 {
 	page = TNWAW_Rain,
 	translation = TNWAW_Rain_Threshold,
@@ -230,7 +468,7 @@ option TNWAW.Rain.Threshold
 
 
 
-option TNWAW.Fog.Enabled
+option TNWAW_Fog_Enabled
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_Enabled,
@@ -238,7 +476,9 @@ option TNWAW.Fog.Enabled
 	default = false,
 }
 
-option TNWAW.Fog.MutationEnabled.Speed
+
+
+option TNWAW_Fog_MutationEnabled_Speed
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_MutationEnabled_Speed,
@@ -246,7 +486,23 @@ option TNWAW.Fog.MutationEnabled.Speed
 	default = false,
 }
 
-option TNWAW.Fog.MutationEnabled.Cognition
+option TNWAW_Fog_MutationEnabled_Strength
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Strength,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Fog_MutationEnabled_Toughness
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Toughness,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Fog_MutationEnabled_Cognition
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_MutationEnabled_Cognition,
@@ -254,17 +510,62 @@ option TNWAW.Fog.MutationEnabled.Cognition
 	default = false,
 }
 
-option TNWAW.Fog.Target.Speed
+option TNWAW_Fog_MutationEnabled_Memory
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Memory,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Fog_MutationEnabled_Sight
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Sight,
+	type = boolean,
+	default = false,
+}
+
+option TNWAW_Fog_MutationEnabled_Hearing
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_MutationEnabled_Hearing,
+	type = boolean,
+	default = false,
+}
+
+
+option TNWAW_Fog_Target_Speed
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_Target_Speed,
 	type = enum,
-	valueTranslation = ZombieLore_Speeds,
+	valueTranslation = ZombieLore_Speed,
 	numValues = 4,
 	default = 2,
 }
 
-option TNWAW.Fog.Target.Cognition
+option TNWAW_Fog_Target_Strength
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Strength,
+	type = enum,
+	valueTranslation = ZombieLore_Strength,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Fog_Target_Toughness
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Toughness,
+	type = enum,
+	valueTranslation = ZombieLore_Toughness,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Fog_Target_Cognition
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_Target_Cognition,
@@ -274,7 +575,39 @@ option TNWAW.Fog.Target.Cognition
 	default = 3,
 }
 
-option TNWAW.Fog.PhaseTimeout
+option TNWAW_Fog_Target_Memory
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Memory,
+	type = enum,
+	valueTranslation = ZombieLore_Memory,
+	numValues = 4,
+	default = 2,
+}
+
+option TNWAW_Fog_Target_Sight
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Sight,
+	type = enum,
+	valueTranslation = ZombieLore_Sight,
+	numValues = 3,
+	default = 2,
+}
+
+option TNWAW_Fog_Target_Hearing
+{
+	page = TNWAW_Fog,
+	translation = TNWAW_Fog_Target_Hearing,
+	type = enum,
+	valueTranslation = ZombieLore_Hearing,
+	numValues = 3,
+	default = 2,
+}
+
+
+
+option TNWAW_Fog_PhaseTimeout
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_PhaseTimeout,
@@ -284,7 +617,7 @@ option TNWAW.Fog.PhaseTimeout
 	default = 30,
 }
 
-option TNWAW.Fog.Threshold
+option TNWAW_Fog_Threshold
 {
 	page = TNWAW_Fog,
 	translation = TNWAW_Fog_Threshold,

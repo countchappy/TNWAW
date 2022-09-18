@@ -69,12 +69,10 @@ end
 
 -- #region Settings Folder
 SettingsFolder = {
-	Path = nil,
-	Parent = nil,
 	GetPath = function(self)
 		local parentPath = ""
 		if (self.Parent ~= nil) then parentPath = self.Parent:GetPath() end
-		return parentPath .. self.Path .. ".";
+		return parentPath .. self.Path .. self.Separator;
 	end,
 	Load = function(self, key)
 		local option = getSandboxOptions():getOptionByName(self:GetPath() .. key);
@@ -88,9 +86,11 @@ SettingsFolder = {
 	end,
 }
 SettingsFolder.__index = SettingsFolder;
-function SettingsFolder.new(path, parent)
+function SettingsFolder.new(path, parent, separatorOveride)
 	local i = setmetatable({},SettingsFolder);
 	i.Path = path;
+	if separatorOveride then i.Separator = separatorOveride
+	else i.Separator = "_" end
 	if parent then i.Parent = parent end
 	return i;
 end
@@ -100,9 +100,17 @@ function SettingsFolder.parseTable(table, parentFolder)
 		local folder = {};
 		local children = {};
 		if parentFolder then
-			folder = SettingsFolder.new(key, parentFolder);
+			if type(val) == "string" then
+				folder = SettingsFolder.new(key, parentFolder, val);
+			else
+				folder = SettingsFolder.new(key, parentFolder);
+			end
 		else
-			folder = SettingsFolder.new(key);
+			if type(val) == "string" then
+				folder = SettingsFolder.new(key, nil, val);
+			else
+				folder = SettingsFolder.new(key);
+			end
 		end
 		if type(val) == "table" then children = SettingsFolder.parseTable(val, folder) end;
 		for k,v in pairs(children) do folder[k] = v end
@@ -113,16 +121,23 @@ end
 -- #endregion
 
 -- #region Zombie Attribute
-ZombieAttribute = {
-	SettingsManager = {},
-	Key = false,
-	Lore = -1,
-	Default = -1,
-	Current = -1,
-	Enabled = {},
-	Target = {},
-	Load = {
-		Parent = false,
+ZombieAttribute = {}
+ZombieAttribute.__index = ZombieAttribute;
+function ZombieAttribute.new(key, activators, settingsManager)
+	local i = setmetatable({}, ZombieAttribute);
+	i.Key = key;
+	local a = {};
+	for k, v in pairs(activators) do
+		a[k] = false;
+	end
+	i.Lore = -1;
+	i.Default = -1;
+	i.Current = -1;
+	i.Enabled = DeepCopy(a);
+	i.Target = DeepCopy(a);
+	i.SettingsManager = settingsManager;
+	i.Load = {
+		Parent = i,
 		Lore = function(self) return self.Parent.SettingsManager.ZombieLore:Load(self.Parent.Key) or self.Parent.Lore end,
 		Default = function(self) return self.Parent.SettingsManager.TNWAW.ZombieLore:Load(self.Parent.Key) or self.Parent.Default end,
 		Enabled = function(self)
@@ -147,28 +162,14 @@ ZombieAttribute = {
 			self.Parent.Enabled = self:Enabled();
 			self.Parent.Target = self:Target();
 		end,
-	},
-	Save = {
-		Parent = false,
+	}
+	i.Save = {
+		Parent = i,
 		Lore = function(self) self.Parent.SettingsManager.ZombieLore:Save(self.Parent.Key, self.Parent.Lore) end,
 		All = function(self)
 			self:Lore();
 		end,
-	},
-}
-ZombieAttribute.__index = ZombieAttribute;
-function ZombieAttribute.new(key, activators, settingsManager)
-	local i = setmetatable({}, ZombieAttribute);
-	i.Key = key;
-	local a = {};
-	for k, v in pairs(activators) do
-		a[k] = false;
-	end
-	i.Enabled = DeepCopy(a);
-	i.Target = DeepCopy(a);
-	i.SettingsManager = settingsManager;
-	i.Load.Parent = i;
-	i.Save.Parent = i;
+	}
 	return i;
 end
 -- #endregion
@@ -176,16 +177,6 @@ end
 -- #region Mutation Manager
 
 MutationManager = {
-	SettingsManager = false,
-
-	Activators = {},
-	ZombieAttribute = {},
-
-	PhaseChange = {
-		Active = false,
-		Timer = 0,
-	},
-
 	Log = function(self, msg)
 		Log(self.ZombieAttribute.Key.." Manager: "..msg)
 	end,
@@ -260,7 +251,7 @@ MutationManager = {
 			end
 		end
 	end,
-	CheckPhaseChange = function(self)
+	EveryOneMinute = function(self)
 		self.ZombieAttribute.Load:All();
 
 		if self.ZombieAttribute.Current == -1 then
@@ -288,13 +279,13 @@ MutationManager = {
 						self:DoPhaseChange(targetValue);
 						if isDebugEnabled() then self:Log("Phase change complete. Timeout=" .. self.PhaseChange.Timer) end
 					else
-						if isDebugEnabled() then self:Log("Phasing towards target strength " .. targetValue .. ". Timeout=" .. self.PhaseChange.Timer) end
+						if isDebugEnabled() then self:Log("Phasing towards target " .. self.Key .. " " .. targetValue .. ". Timeout=" .. self.PhaseChange.Timer) end
 					end
 	
 				end
 				self.PhaseChange.Timer = self.PhaseChange.Timer - 1;
 			elseif self.PhaseChange.Active or self.PhaseChange.Timer > 0 then
-				if isDebugEnabled() then self:Log("Target already reached. Cancelling phase timer.") end
+				if isDebugEnabled() then self:Log("Target " .. self.Key .. " already reached. Cancelling phase timer.") end
 				self.PhaseChange.Active = false;
 				self.PhaseChange.Timer = 0;
 			end
@@ -316,6 +307,11 @@ function MutationManager.new(key, zombieAttribute, activators, settings)
 	i.ZombieAttribute = zombieAttribute;
 	i.Activators = activators;
 	i.SettingsManager = settings;
+
+	i.PhaseChange = {
+		Active = false,
+		Timer = 0,
+	}
 	return i;
 end
 -- #endregion
@@ -323,41 +319,19 @@ end
 -- #region Activator - Abstract
 
 AbstractActivator = {
-	Key = false,
-	Active = false,
-	SettingsManager = {},
+	Log = function(self, msg)
+		Log(self.Key.." Activator: "..msg)
+	end,
+	Enabled = function(self)
+		return self.SettingsManager.TNWAW[self.Key]:Load("Enabled") or false;
+	end,
 }
-
 AbstractActivator.__index = AbstractActivator;
-
-function AbstractActivator:Log(msg)
-	Log(self.Key.." Activator: "..msg)
-end
-function AbstractActivator:Enabled()
-	return self.SettingsManager.TNWAW[self.Key]:Load("Enabled") or false;
-end
 
 -- #endregion
 
 -- #region Activator - Night
 NightActivator = {
-	GameTime = false,
-
-	NightTime = {
-		Start = {
-			Spring = 22,
-			Summer = 23,
-			Autumn = 22,
-			Winter = 20,
-		},
-		End = {
-			Spring = 6,
-			Summer = 6,
-			Autumn = 6,
-			Winter = 6,
-		},
-	},
-
 	Season = {
 		Parent = false,
 		Switch = {
@@ -407,18 +381,39 @@ NightActivator = {
 		local month = self.GameTime:getMonth();
 		local hour = getGameTime():getTimeOfDay();
 	
-		self.Active = self.Season:IsNight(month, hour) and self:Enabled();
+		local a = self.Season:IsNight(month, hour) and self:Enabled();
+		if a ~= self.Active then
+			self:Log("Mutation activator "..Format(a));
+			self.Active = a;
+		end
 	end,
 }
 NightActivator.__index = NightActivator;
 setmetatable(NightActivator, AbstractActivator);
 function NightActivator.new(settings)
 	local i = setmetatable({}, NightActivator);
+	i.Key = "Night";
 	i.Active = false;
+
 	i.SettingsManager = settings;
 	i.GameTime = GameTime:getInstance();
+	
+	i.NightTime = {
+		Start = {
+			Spring = 22,
+			Summer = 23,
+			Autumn = 22,
+			Winter = 20,
+		},
+		End = {
+			Spring = 6,
+			Summer = 6,
+			Autumn = 6,
+			Winter = 6,
+		},
+	};
+
 	i.Season.Parent = i;
-	i.Key = "Night";
 	i:EveryHours();
 	return i;
 end
@@ -426,9 +421,6 @@ end
 
 -- #region Activator - Rain
 RainActivator = {
-	Threshold = 0.0,
-	LastRain = 0.0,
-
 	Refresh = function(self)
 		self.Threshold = self.SettingsManager.TNWAW.Rain:Load("Threshold") or 1;
 	end,
@@ -441,7 +433,11 @@ RainActivator = {
 		if self.LastRain ~= currentRain then
 			self.LastRain = currentRain;
 
-			self.Active = (self.LastRain >= self.Threshold) and self:Enabled();
+			local a = (self.LastRain >= self.Threshold) and self:Enabled();
+			if a ~= self.Active then
+				self:Log("Mutation activator "..Format(a));
+				self.Active = a;
+			end
 	
 			if isDebugEnabled() and not self.Active and self.LastRain >= 1 then
 				self:Log("Detected. Threshold/Amount=" .. self.Threshold .. "/" .. self.LastRain);
@@ -453,9 +449,15 @@ RainActivator.__index = RainActivator;
 setmetatable(RainActivator, AbstractActivator);
 function RainActivator.new(settings)
 	local i = setmetatable({}, RainActivator);
-	i.Active = false;
-	i.SettingsManager = settings;
+
 	i.Key = "Rain";
+	i.Active = false;
+	
+	i.SettingsManager = settings;
+
+	i.Threshold = 0.0;
+	i.LastRain = 0.0;
+	
 	i:OnClimateTick();
 	return i;
 end
@@ -463,10 +465,6 @@ end
 
 -- #region Activator - Fog
 FogActivator = {
-	Threshold = 0.0,
-	LastFog = 0.0,
-	ClimateManager = false,
-
 	Refresh = function(self)
 		self.Threshold = self.SettingsManager.TNWAW.Fog:Load("Threshold") or 1;
 	end,
@@ -478,7 +476,11 @@ FogActivator = {
 		if self.LastFog ~= currentFog then
 			self.LastFog = currentFog;
 
-			self.Active = (self.LastFog >= self.Threshold) and self:Enabled();
+			local a = (self.LastFog >= self.Threshold) and self:Enabled();
+			if a ~= self.Active then
+				self:Log("Mutation activator "..Format(a));
+				self.Active = a;
+			end
 
 			if isDebugEnabled() and not self.Active and self.LastFog >= 1 then
 				self:Log("Detected. Threshold/Amount=" .. self.Threshold .. "/" .. self.LastFog);
@@ -490,10 +492,16 @@ FogActivator.__index = FogActivator;
 setmetatable(FogActivator, AbstractActivator);
 function FogActivator.new(settings)
 	local i = setmetatable({}, FogActivator);
+
+	i.Key = "Fog";
 	i.Active = false;
+
 	i.SettingsManager = settings;
 	i.ClimateManager = getClimateManager();
-	i.Key = "Fog";
+
+	i.Threshold = 0.0;
+	i.LastFog = 0.0;
+	
 	i:OnClimateTick();
 	return i;
 end
@@ -504,7 +512,7 @@ end
 local ZombieUpdateInterval = 500;
 
 local SettingsList = {
-	ZombieLore = {},
+	ZombieLore = ".",
 	TNWAW = {
 		ZombieLore = {},
 		Night = {
@@ -526,7 +534,12 @@ local SettingsList = {
 
 local MutationsList = {
 	Speed = false,
+	Strength = false,
+	Toughness = false,
 	Cognition = false,
+	Memory = false,
+	Sight = false,
+	Hearing = false,
 }
 
 -- ============================================
@@ -556,17 +569,17 @@ function EveryOneMinute()
 		end
 	end
 
-	for attributeKey, attribute in pairs(Attributes) do
+	for atkOne, attribute in pairs(Attributes) do
 		if type(attribute) ~= "table" then
-			Attributes[attributeKey] = ZombieAttribute.new(attributeKey, Activators, Settings);
-		else
-			AttributeManagers[attributeKey]:CheckPhaseChange();
+			Attributes[atkOne] = ZombieAttribute.new(atkOne, Activators, Settings);
 		end
 	end
 
-	for attributeKey, attrManager in pairs(AttributeManagers) do
-		if type(attrManager) ~= "table" then
-			AttributeManagers[attributeKey] = MutationManager.new(attributeKey, Attributes[attributeKey], Activators, Settings);
+	for atkTwo, attrManager in pairs(AttributeManagers) do
+		if type(attrManager) == "table" then
+			attrManager:EveryOneMinute();
+		else
+			AttributeManagers[atkTwo] = MutationManager.new(atkTwo, Attributes[atkTwo], Activators, Settings);
 		end
 	end
 end

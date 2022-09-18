@@ -4,18 +4,56 @@ Sandbox_EN = {
     Sandbox_TNWAW_ZombieLore_Speed = "Default Zombie Speed",
     Sandbox_TNWAW_ZombieLore_Speed_tooltip = "The normal zombie speed. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
 
+    Sandbox_TNWAW_ZombieLore_Strength = "Default Zombie Strength",
+    Sandbox_TNWAW_ZombieLore_Strength_tooltip = "The normal zombie strength. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
+
+    Sandbox_TNWAW_ZombieLore_Toughness = "Default Zombie Toughness",
+    Sandbox_TNWAW_ZombieLore_Toughness_tooltip = "The normal zombie toughness. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
+
     Sandbox_TNWAW_ZombieLore_Cognition = "Default Zombie Cognition",
     Sandbox_TNWAW_ZombieLore_Cognition_tooltip = "The normal zombie cognition. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
 
-    Sandbox_ZombieLore_Speeds_option1 = "Sprinters"    
-    Sandbox_ZombieLore_Speeds_option2 = "Fast Shamblers",
-    Sandbox_ZombieLore_Speeds_option3 = "Shamblers",
-    Sandbox_ZombieLore_Speeds_option4 = "Random",
+    Sandbox_TNWAW_ZombieLore_Memory = "Default Zombie Memory",
+    Sandbox_TNWAW_ZombieLore_Memory_tooltip = "The normal zombie memory. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
 
-    Sandbox_ZombieLore_Cognition_option1 = "Navigate + Use Doors"    
+    Sandbox_TNWAW_ZombieLore_Sight = "Default Zombie Sight",
+    Sandbox_TNWAW_ZombieLore_Sight_tooltip = "The normal zombie sight. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
+
+    Sandbox_TNWAW_ZombieLore_Hearing = "Default Zombie Hearing",
+    Sandbox_TNWAW_ZombieLore_Hearing_tooltip = "The normal zombie hearing. This is what the zombies will start to return to at 'Daybreak', after a storm passes, or after fog clears.",
+
+    Sandbox_ZombieLore_Speed_option1 = "Sprinters",
+    Sandbox_ZombieLore_Speed_option2 = "Fast Shamblers",
+    Sandbox_ZombieLore_Speed_option3 = "Shamblers",
+    Sandbox_ZombieLore_Speed_option4 = "Random",
+    
+    Sandbox_ZombieLore_Strength_option1 = "Superhuman",
+    Sandbox_ZombieLore_Strength_option2 = "Normal",
+    Sandbox_ZombieLore_Strength_option3 = "Weak",
+    Sandbox_ZombieLore_Strength_option4 = "Random",
+
+    Sandbox_ZombieLore_Toughness_option1 = "Tough",
+    Sandbox_ZombieLore_Toughness_option2 = "Normal",
+    Sandbox_ZombieLore_Toughness_option3 = "Fragile",
+    Sandbox_ZombieLore_Toughness_option4 = "Random",
+
+    Sandbox_ZombieLore_Cognition_option1 = "Navigate + Use Doors",
     Sandbox_ZombieLore_Cognition_option2 = "Navigate",
     Sandbox_ZombieLore_Cognition_option3 = "Basic Navigation",
     Sandbox_ZombieLore_Cognition_option4 = "Random",
+
+    Sandbox_ZombieLore_Memory_option1 = "Long",
+    Sandbox_ZombieLore_Memory_option2 = "Normal",
+    Sandbox_ZombieLore_Memory_option3 = "Short",
+    Sandbox_ZombieLore_Memory_option4 = "None",
+
+    Sandbox_ZombieLore_Sight_option1 = "Eagle",
+    Sandbox_ZombieLore_Sight_option2 = "Normal",
+    Sandbox_ZombieLore_Sight_option3 = "Poor",
+
+    Sandbox_ZombieLore_Hearing_option1 = "Pinpoint",
+    Sandbox_ZombieLore_Hearing_option2 = "Normal",
+    Sandbox_ZombieLore_Hearing_option3 = "Poor",
 
 
 
@@ -25,17 +63,52 @@ Sandbox_EN = {
     Sandbox_TNWAW_Night_Enabled = "Enable Night Behavior Mutations",
     Sandbox_TNWAW_Night_Enabled_tooltip = "This settings will enable/disable the night activated zombie behavior mutations that are configured with the settings below.",
 
-    Sandbox_TNWAW_Night_MutationEnabled_Speed = "Enable Zombie Speed Mutation",
+
+
+    Sandbox_TNWAW_Night_MutationEnabled_Speed = "Enable Speed Mutation",
     Sandbox_TNWAW_Night_MutationEnabled_Speed_tooltip = "Enable the zombie speed mutation at night.",
 
-    Sandbox_TNWAW_Night_MutationEnabled_Cognition = "Enable Zombie Cognition Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Strength = "Enable Strength Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Strength_tooltip = "Enable the zombie strength mutation at night.",
+
+    Sandbox_TNWAW_Night_MutationEnabled_Toughness = "Enable Toughness Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Toughness_tooltip = "Enable the zombie toughness mutation at night.",
+
+    Sandbox_TNWAW_Night_MutationEnabled_Cognition = "Enable Cognition Mutation",
     Sandbox_TNWAW_Night_MutationEnabled_Cognition_tooltip = "Enable the zombie cognition mutation at night.",
+
+    Sandbox_TNWAW_Night_MutationEnabled_Memory = "Enable Memory Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Memory_tooltip = "Enable the zombie memory mutation at night.",
+
+    Sandbox_TNWAW_Night_MutationEnabled_Sight = "Enable Sight Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Sight_tooltip = "Enable the zombie sight mutation at night.",
+
+    Sandbox_TNWAW_Night_MutationEnabled_Hearing = "Enable Hearing Mutation",
+    Sandbox_TNWAW_Night_MutationEnabled_Hearing_tooltip = "Enable the zombie hearing mutation at night.",
+
 
     Sandbox_TNWAW_Night_Target_Speed = "Target Zombie Speed",
     Sandbox_TNWAW_Night_Target_Speed_tooltip = "The zombie speed to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
 
+    Sandbox_TNWAW_Night_Target_Strength = "Target Zombie Strength",
+    Sandbox_TNWAW_Night_Target_Strength_tooltip = "The zombie strength to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+    Sandbox_TNWAW_Night_Target_Toughness = "Target Zombie Toughness",
+    Sandbox_TNWAW_Night_Target_Toughness_tooltip = "The zombie toughness to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
     Sandbox_TNWAW_Night_Target_Cognition = "Target Zombie Cognition",
     Sandbox_TNWAW_Night_Target_Cognition_tooltip = "The zombie cognition to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+    Sandbox_TNWAW_Night_Target_Memory = "Target Zombie Memory",
+    Sandbox_TNWAW_Night_Target_Memory_tooltip = "The zombie memory to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+    Sandbox_TNWAW_Night_Target_Sight = "Target Zombie Sight",
+    Sandbox_TNWAW_Night_Target_Sight_tooltip = "The zombie sight to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+    Sandbox_TNWAW_Night_Target_Hearing = "Target Zombie Hearing",
+    Sandbox_TNWAW_Night_Target_Hearing_tooltip = "The zombie hearing to start phasing zombies to at night (starts at 'Nightfall' for the given season).",
+
+
 
     Sandbox_TNWAW_Night_PhaseTimeout = "Night Mutation Phase Timeout",
     Sandbox_TNWAW_Night_PhaseTimeout_tooltip = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
@@ -66,17 +139,52 @@ Sandbox_EN = {
     Sandbox_TNWAW_Rain_Enabled = "Enable Rain Behavior Mutations",
     Sandbox_TNWAW_Rain_Enabled_tooltip = "This setting will enable/disable the rain activated zombie behavior mutations that are configured with the settings below.",
 
+
+
     Sandbox_TNWAW_Rain_MutationEnabled_Speed = "Enable Speed Mutation",
     Sandbox_TNWAW_Rain_MutationEnabled_Speed_tooltip = "Enable the zombie speed mutation when it's raining.",
+
+    Sandbox_TNWAW_Rain_MutationEnabled_Strength = "Enable Strength Mutation",
+    Sandbox_TNWAW_Rain_MutationEnabled_Strength_tooltip = "Enable the zombie strength mutation when it's raining.",
+
+    Sandbox_TNWAW_Rain_MutationEnabled_Toughness = "Enable Toughness Mutation",
+    Sandbox_TNWAW_Rain_MutationEnabled_Toughness_tooltip = "Enable the zombie toughness mutation when it's raining.",
 
     Sandbox_TNWAW_Rain_MutationEnabled_Cognition = "Enable Cognition Mutation",
     Sandbox_TNWAW_Rain_MutationEnabled_Cognition_tooltip = "Enable the zombie cognition mutation when it's raining.",
 
+    Sandbox_TNWAW_Rain_MutationEnabled_Memory = "Enable Memory Mutation",
+    Sandbox_TNWAW_Rain_MutationEnabled_Memory_tooltip = "Enable the zombie memory mutation when it's raining.",
+
+    Sandbox_TNWAW_Rain_MutationEnabled_Sight = "Enable Sight Mutation",
+    Sandbox_TNWAW_Rain_MutationEnabled_Sight_tooltip = "Enable the zombie sight mutation when it's raining.",
+
+    Sandbox_TNWAW_Rain_MutationEnabled_Hearing = "Enable Hearing Mutation",
+    Sandbox_TNWAW_Rain_MutationEnabled_Hearing_tooltip = "Enable the zombie hearing mutation when it's raining.",
+
+
     Sandbox_TNWAW_Rain_Target_Speed = "Target Zombie Speed",
     Sandbox_TNWAW_Rain_Target_Speed_tooltip = "The zombie speed to start phasing zombies to when it starts raining.",
 
+    Sandbox_TNWAW_Rain_Target_Strength = "Target Zombie Strength",
+    Sandbox_TNWAW_Rain_Target_Strength_tooltip = "The zombie strength to start phasing zombies to when it starts raining.",
+
+    Sandbox_TNWAW_Rain_Target_Toughness = "Target Zombie Toughness",
+    Sandbox_TNWAW_Rain_Target_Toughness_tooltip = "The zombie toughness to start phasing zombies to when it starts raining.",
+
     Sandbox_TNWAW_Rain_Target_Cognition = "Target Zombie Cognition",
     Sandbox_TNWAW_Rain_Target_Cognition_tooltip = "The zombie cognition to start phasing zombies to when it starts raining.",
+
+    Sandbox_TNWAW_Rain_Target_Memory = "Target Zombie Memory",
+    Sandbox_TNWAW_Rain_Target_Memory_tooltip = "The zombie memory to start phasing zombies to when it starts raining.",
+
+    Sandbox_TNWAW_Rain_Target_Sight = "Target Zombie Sight",
+    Sandbox_TNWAW_Rain_Target_Sight_tooltip = "The zombie sight to start phasing zombies to when it starts raining.",
+
+    Sandbox_TNWAW_Rain_Target_Hearing = "Target Zombie Hearing",
+    Sandbox_TNWAW_Rain_Target_Hearing_tooltip = "The zombie hearing to start phasing zombies to when it starts raining.",
+
+
 
     Sandbox_TNWAW_Rain_PhaseTimeout = "Mutation Phase Timeout",
     Sandbox_TNWAW_Rain_PhaseTimeout_tooltip = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
@@ -91,17 +199,52 @@ Sandbox_EN = {
     Sandbox_TNWAW_Fog_Enabled = "Enable Fog Behavior Mutations",
     Sandbox_TNWAW_Fog_Enabled_tooltip = "This setting will enable/disable the fog activated zombie behavior mutations that are configured with the settings below.",
 
+
+
     Sandbox_TNWAW_Fog_MutationEnabled_Speed = "Enable Speed Mutation",
     Sandbox_TNWAW_Fog_MutationEnabled_Speed_tooltip = "Enable the zombie speed mutation when it's foggy.",
+
+    Sandbox_TNWAW_Fog_MutationEnabled_Strength = "Enable Strength Mutation",
+    Sandbox_TNWAW_Fog_MutationEnabled_Strength_tooltip = "Enable the zombie strength mutation when it's foggy.",
+
+    Sandbox_TNWAW_Fog_MutationEnabled_Toughness = "Enable Toughness Mutation",
+    Sandbox_TNWAW_Fog_MutationEnabled_Toughness_tooltip = "Enable the zombie toughness mutation when it's foggy.",
 
     Sandbox_TNWAW_Fog_MutationEnabled_Cognition = "Enable Cognition Mutation",
     Sandbox_TNWAW_Fog_MutationEnabled_Cognition_tooltip = "Enable the zombie cognition mutation when it's foggy.",
 
+    Sandbox_TNWAW_Fog_MutationEnabled_Memory = "Enable Memory Mutation",
+    Sandbox_TNWAW_Fog_MutationEnabled_Memory_tooltip = "Enable the zombie memory mutation when it's foggy.",
+
+    Sandbox_TNWAW_Fog_MutationEnabled_Sight = "Enable Sight Mutation",
+    Sandbox_TNWAW_Fog_MutationEnabled_Sight_tooltip = "Enable the zombie sight mutation when it's foggy.",
+
+    Sandbox_TNWAW_Fog_MutationEnabled_Hearing = "Enable Hearing Mutation",
+    Sandbox_TNWAW_Fog_MutationEnabled_Hearing_tooltip = "Enable the zombie hearing mutation when it's foggy.",
+
+
     Sandbox_TNWAW_Fog_Target_Speed = "Target Zombie Speed",
-    Sandbox_TNWAW_Fog_Target_Speed_tooltip = "The zombie speed to start phasing zombies to when it starts foggy.",
+    Sandbox_TNWAW_Fog_Target_Speed_tooltip = "The zombie speed to start phasing zombies to when it starts getting foggy.",
+    
+    Sandbox_TNWAW_Fog_Target_Strength = "Target Zombie Strength",
+    Sandbox_TNWAW_Fog_Target_Strength_tooltip = "The zombie strength to start phasing zombies to when it starts getting foggy.",
+
+    Sandbox_TNWAW_Fog_Target_Toughness = "Target Zombie Toughness",
+    Sandbox_TNWAW_Fog_Target_Toughness_tooltip = "The zombie toughness to start phasing zombies to when it starts getting foggy.",
 
     Sandbox_TNWAW_Fog_Target_Cognition = "Target Zombie Cognition",
-    Sandbox_TNWAW_Fog_Target_Cognition_tooltip = "The zombie cognition to start phasing zombies to when it starts foggy.",
+    Sandbox_TNWAW_Fog_Target_Cognition_tooltip = "The zombie cognition to start phasing zombies to when it starts getting foggy.",
+
+    Sandbox_TNWAW_Fog_Target_Memory = "Target Zombie Memory",
+    Sandbox_TNWAW_Fog_Target_Memory_tooltip = "The zombie memory to start phasing zombies to when it starts getting foggy.",
+
+    Sandbox_TNWAW_Fog_Target_Sight = "Target Zombie Sight",
+    Sandbox_TNWAW_Fog_Target_Sight_tooltip = "The zombie sight to start phasing zombies to when it starts getting foggy.",
+
+    Sandbox_TNWAW_Fog_Target_Hearing = "Target Zombie Hearing",
+    Sandbox_TNWAW_Fog_Target_Hearing_tooltip = "The zombie hearing to start phasing zombies to when it starts getting foggy.",
+
+
 
     Sandbox_TNWAW_Fog_PhaseTimeout = "Mutation Phase Timeout",
     Sandbox_TNWAW_Fog_PhaseTimeout_tooltip = "The amount of time it takes in in-game minutes for each 'phase' step towards the target speed.",
